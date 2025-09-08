@@ -1,10 +1,11 @@
 import { Column, CreateDateColumn, UpdateDateColumn } from 'typeorm';
-import { BaseEntity, Entity } from 'typeorm';
+import { Entity } from 'typeorm';
 import { UserStatus } from '../enums/status.enum';
 import { Roles } from '../enums/role.enum';
+import { AbstractEntity } from '@app/common';
 
 @Entity('User')
-export class UserEntity extends BaseEntity {
+export class UserEntity extends AbstractEntity {
   @Column({ nullable: true })
   first_name: string;
 
