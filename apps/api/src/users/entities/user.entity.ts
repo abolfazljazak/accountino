@@ -1,4 +1,4 @@
-import { Column } from 'typeorm';
+import { Column, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 import { BaseEntity, Entity } from 'typeorm';
 import { UserStatus } from '../enums/status.enum';
 import { Roles } from '../enums/role.enum';
@@ -29,9 +29,9 @@ export class UserEntity extends BaseEntity {
   @Column()
   wallet_balance: number;
 
-  @Column()
+  @CreateDateColumn()
   created_at: Date;
 
-  @Column()
+  @UpdateDateColumn()
   updated_at: Date;
 }
