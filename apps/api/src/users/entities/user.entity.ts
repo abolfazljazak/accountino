@@ -27,7 +27,7 @@ export class UserEntity extends AbstractEntity {
   @Column({ unique: true, nullable: true })
   phone: string;
 
-  @Column()
+  @Column({ default: 0 })
   wallet_balance: number;
 
   @CreateDateColumn()
