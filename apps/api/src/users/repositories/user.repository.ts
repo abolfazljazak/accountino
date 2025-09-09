@@ -1,7 +1,6 @@
 import { InjectRepository } from '@nestjs/typeorm';
 import { UserEntity } from '../entities/user.entity';
-import { DeepPartial, Repository } from 'typeorm';
-import { CreateUserDto } from '../dto/user.dto';
+import { Repository } from 'typeorm';
 import { AbstractRepository } from '@app/common';
 
 export class UserRepository extends AbstractRepository<UserEntity> {
