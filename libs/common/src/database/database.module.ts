@@ -15,6 +15,8 @@ import { EntityClassOrSchema } from '@nestjs/typeorm/dist/interfaces/entity-clas
         host: configService.get('DB_HOST'),
         port: +configService.get('DB_PORT') || 5432,
         database: configService.get('DB_NAME'),
+        synchronize: false,
+        autoLoadEntities: true,
       }),
       inject: [ConfigService],
     }),

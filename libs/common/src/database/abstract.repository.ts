@@ -12,7 +12,7 @@ import { AbstractEntity } from '@app/common';
 export abstract class AbstractRepository<TEntity extends AbstractEntity> {
   constructor(protected readonly repository: Repository<TEntity>) {}
 
-  async create(document: Omit<TEntity, 'id'>): Promise<TEntity> {
+  async create(document: DeepPartial<TEntity>): Promise<TEntity> {
     const newDocument = this.repository.create(
       document as DeepPartial<TEntity>,
     );
