@@ -1,8 +1,15 @@
-import { Column, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import {
+  BeforeInsert,
+  BeforeUpdate,
+  Column,
+  CreateDateColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 import { Entity } from 'typeorm';
 import { UserStatus } from '../enums/status.enum';
 import { Roles } from '../enums/role.enum';
 import { AbstractEntity } from '@app/common';
+import * as argon2 from 'argon2';
 
 @Entity('User')
 export class UserEntity extends AbstractEntity {
@@ -23,6 +30,18 @@ export class UserEntity extends AbstractEntity {
 
   @Column()
   password: string;
+
+  @BeforeInsert()
+  async hashPasswordBeforeInsert() {
+    this.password = await argon2.hash(this.password);
+  }
+
+  @BeforeUpdate()
+  async hashPasswordBeforeUpdate() {
+    if (this.password && this.password.startsWith("$argon2")) {
+      this.password = await argon2.hash(this.password);
+    }
+  }
 
   @Column({ unique: true, nullable: true })
   phone: string;

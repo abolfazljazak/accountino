@@ -2,8 +2,6 @@ import { ConflictException, HttpStatus, Injectable } from '@nestjs/common';
 import { UserRepository } from '../users/repositories/user.repository';
 import { RegisterDto } from './dto/auth.dto';
 import { AuthMessage, PublicMessage } from '@app/common';
-import { UserStatus } from '../users/enums/status.enum';
-import { Roles } from '../users/enums/role.enum';
 
 @Injectable()
 export class AuthService {
