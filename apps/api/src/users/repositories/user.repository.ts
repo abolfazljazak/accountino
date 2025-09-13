@@ -11,12 +11,7 @@ export class UserRepository extends AbstractRepository<UserEntity> {
     super(userRepository);
   }
 
-  async findbyEmailOrPhone(email?: string, phone?: string) {
-    return this.userRepository.findOne({
-      where: {
-        email,
-        phone,
-      },
-    });
+  async findByPhone(phone: string) {
+    return this.userRepository.findOneBy({ phone });
   }
 }
